@@ -1,3 +1,4 @@
+#Libreria - Menu - BD
 import smtplib
 import pyodbc
 import time
@@ -20,6 +21,7 @@ def conexion():
     except Exception as ex:
         print(f"Error. Conexión a DB. {ex}")
 
+#Funcion para ingresar datos del registro que se desea agregar
 def consulta_agregar():
     input (" ")
     nombre = input("Digite un nombre: ")
@@ -37,15 +39,55 @@ def consulta_eliminar():
     query = "delete from usuario where nombre='" + info + "'"
     return query
 
+#Funcion para agregar un registro a la BD
+def agregar_registro():
+    conect = conexion()
+    agg_cursor = conect.cursor()
+    query = consulta_agregar()
+    agg_cursor.execute(query)
+    agg_cursor.commit()
+    agg_cursor.close()
+    conect.close()
+    input (" ")
+    print("¡El registro fue agregado con exito!")
+
+#Funcion para eliminar un registro de la BD
+def eliminar_registro():
+    conx = conexion()
+    del_cursor = conx.cursor()
+    query = consulta_eliminar()
+    del_cursor.execute(query)
+    del_cursor.commit()
+    del_cursor.close()
+    conx.commit()
+    input (" ")
+    print("¡El registro fue eliminado con exito!")
+
+
+#Funcion para ver el registro guardado en la BD
+def ver_registros():
+    query = "select * from usuario;"
+    conx = conexion()
+    ver_cursor = conx.cursor()
+    ver_cursor.execute(query)
+    registro = ver_cursor.fetchone()
+    while registro:
+        print(registro)
+        registro = ver_cursor.fetchone()
+    ver_cursor.close()
+    conx.close()
+    input()
+
 
 #Funcion para filtro de usuarios por edad
 def menu_filtro():
     print("\t Filtro con el que se enviará el correo")
     print("1. Por la edad del usuario")
     opc = int(input("\n Opción que desea: "))
-      if opc ==1:
+
+    if opc ==1:
          enviar_edad()
-        return opc
+    return opc
 
 def enviar_edad():
     print("\n 1. Menores de 40 años",
