@@ -113,31 +113,30 @@ def datos_clientes():
     conx.close()
     return datos
 
-    def filtro():
+def filtro():
         clientes = []
-    opc = enviar_edad()
-    registros = datos_clientes()
-    if opc == 1:
-        opc = 40
+        opc = enviar_edad()
+        registros = datos_clientes()
+        if opc == 1:
+            opc = 40
         for n in registros:
             datos = n
             if int(datos[1]) <= opc:
                 print(n)
                 clientes.append(n)
-    elif opc == 2:
-        opc = 50
+            elif opc == 2:
+                 opc = 50
         for n in registros:
             datos = n
             if int(datos[1]) >= opc:
                 print(n)
                 clientes.append(n)
-    else:
-        input (" ")
-        print("Error. La opción no es valida!")
-    return clientes
+        else:
+
+            print("Error. La opción no es valida!")
+            return clientes
 
 # funcion para el envio de correos conectado a BD.
-
 def envio_correo():
     edades = ["Menor", "Mayor"]
     registros = filtro()
