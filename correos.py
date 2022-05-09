@@ -20,8 +20,24 @@ def conexion():
     except Exception as ex:
         print(f"Error. Conexión a DB. {ex}")
 
+def consulta_agregar():
+    input (" ")
+    nombre = input("Digite un nombre: ")
+    cedula = input(f"Digite el número de identificación de {nombre}: ")
+    correo = input(f"Digite el correo de {nombre}: ")
+    edad = input(f"Digite la edad de {nombre}: ")
+    ciudad = input(f"Digite la ciudad/municipio donde vive {nombre}: ")
+    productos_adqui = input(f"Digite el nombre del producto comprado por {nombre}: ")
+    fecha_compra = input("Digite la fecha de venta asi: Día - Mes - Año: ")
+    query = "insert into usuario (nombre, cedula, correo, edad, ciudad, productos_adqui, fecha_compra) values ('" + nombre + "','" + cedula + "','" + correo + "','" + edad + "','" + ciudad + "','" + productos_adqui + "','" + fecha_compra + "') "
+    return query
 
-        
+def consulta_eliminar():
+    info = input("Digite el nombre de la persona para borrarla del registro hecho: ")
+    query = "delete from usuario where nombre='" + info + "'"
+    return query
+
+
 #Funcion para filtro de usuarios por edad
 def menu_filtro():
     print("\t Filtro con el que se enviará el correo")
