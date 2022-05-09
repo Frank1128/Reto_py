@@ -1,9 +1,11 @@
-        def menu_filtro():
-        print("\t Filtro con el que se enviará el correo")
+
+#Funcion para filtro de usuarios por edad
+def menu_filtro():
+    print("\t Filtro con el que se enviará el correo")
     print("1. Por la edad del usuario")
     opc = int(input("\n Opción que desea: "))
-    if opc ==1:
-        enviar_edad()
+      if opc ==1:
+         enviar_edad()
         return opc
 
 def enviar_edad():
@@ -14,6 +16,7 @@ def enviar_edad():
     opc = int(input("Digite la opción adecuada: "))
     return opc
 
+   #funcion para registro de los usuarios con BD y condicional para edades 
 
 def datos_clientes():
     datos = []
@@ -52,6 +55,8 @@ def datos_clientes():
         print("Error. La opción no es valida!")
     return clientes
 
+# funcion para el envio de correos conectado a BD.
+
 def envio_correo():
     edades = ["Menor", "Mayor"]
     registros = filtro()
@@ -72,7 +77,9 @@ def envio_correo():
         input (" ")
         print("El correo se envió adecuadamente a: ",
               f"\n Nombre: {nombre}, Correo: {mail}, Edad: {edad}")
-              
+
+  # Asignando condicional para opciones del menu     
+
 def bucle():
     while True:
         opcion = menu()
