@@ -1,4 +1,27 @@
+import smtplib
+import pyodbc
+import time
+def menu():
+    print("  \t Menú ")
+    print("\n 1. Ingrese un registro",
+          "\n 2. Elimine un registro",
+          "\n 3. Ver registros ya existentes",
+          "\n 4. Enviar un correo predeterminado",
+          "\n 5. Salir del menú")
+    input (" ")
+    opcion = int(input("Digite la opcion quiere realizar: "))
+    return opcion
 
+def conexion():
+    try:
+        connection = pyodbc.connect('DRIVER={SQL Server};SERVER=DESKTOP-656CLLE;DATABASE=correos_py;Trusted_Connection=yes;')
+        print("¡Conexión Exitosa!")
+        return connection
+    except Exception as ex:
+        print(f"Error. Conexión a DB. {ex}")
+
+
+        
 #Funcion para filtro de usuarios por edad
 def menu_filtro():
     print("\t Filtro con el que se enviará el correo")
